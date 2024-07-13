@@ -1,13 +1,13 @@
 import React from 'react';
 import './HomeScreen.css';
-import Navbar from '../Navbar/Navbar';
-import Banner from '../Banner/Banner';
-import Row from '../Row/Row';
+import Navbar from '../../components/Navbar/Navbar';
+import Banner from '../../components/Banner/Banner';
+import Row from '../../components/Row/Row';
 import requests from '../../requests';
 
 const HomeScreen = () => {
     return (
-        <div>
+        <div className='homescreen'>
             <Navbar />
             <Banner />
             <Row title='NETFLIX ORIGINALS' fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
