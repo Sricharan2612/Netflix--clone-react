@@ -6,7 +6,6 @@ import requests from '../../requests';
 const Banner = () => {
     //States
     const [movie, setMovie] = useState([]);
-    console.log(movie);
     //useEffect
     useEffect(() => {
         const fetchData = async () => {
