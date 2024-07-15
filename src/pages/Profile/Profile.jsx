@@ -1,4 +1,5 @@
 import React from 'react';
+import './Profile.css';
 import Navbar from '../../components/Navbar/Navbar';
 import avatar from '../../assets/netflix-avatar.png';
 import { useSelector } from 'react-redux';
@@ -18,6 +19,7 @@ const Profile = () => {
                     <div className="profile_details">
                         <h2>{user.email}</h2>
                         <div className="profile_plans">
+                            <h3>Plans</h3>
                             <Link to='/'>
                                 <button onClick={() => signOut(auth)} className='profile_signOut'>Sign Out</button>
                             </Link>
