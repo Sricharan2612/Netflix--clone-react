@@ -40,7 +40,7 @@ const SignIn = () => {
 
                 <h4>
                     <span className='signin_gray'>New to Netflix?</span>
-                    <span className='signin_link'>Sign Up now</span>
+                    <span onClick={register} className='signin_link'>Sign Up now</span>
                 </h4>
             </form>
         </div>
