@@ -54,3 +54,19 @@
     bottom: 0;
     left: 0;
 }
+
+@media only screen and (max-width:500px) {
+
+    .banner_title {
+        font-size: 2.5rem;
+    }
+
+    .banner_description {
+        display: none;
+    }
+
+    .banner_button {
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+}

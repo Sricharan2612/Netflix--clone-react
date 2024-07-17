@@ -1,7 +1,8 @@
 .plan {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    gap: 1rem;
+    padding: 15px;
     opacity: 0.8;
 }
 
@@ -22,4 +23,22 @@
 
 .plan_disabled>button {
     background-color: gray !important;
+}
+
+.plan_info>h5 {
+    font-size: 1.1rem;
+    width: fit-content;
+}
+
+.plan_info>h6 {
+    font-size: 0.9rem;
+    padding-top: 1px;
+}
+
+
+@media (min-width:768px) and (max-width:1060px) {
+    .plan {
+        gap: 7rem;
+
+    }
 }

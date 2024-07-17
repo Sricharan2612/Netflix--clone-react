@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import HomeScreen from "./pages/HomeScreen/HomeScreen";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
+import DetailsPage from "./pages/DetailsPage/DetailsPage";
 //Firebase
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -43,6 +44,7 @@ function App() {
             <>
               <Route path="/profile" element={<Profile />} />
               <Route path="/" element={<HomeScreen />} />
+              <Route path="/details/:id" element={<DetailsPage />} />
             </>
           )}
       </Routes>
