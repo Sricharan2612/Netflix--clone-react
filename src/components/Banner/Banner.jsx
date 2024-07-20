@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './Banner.css';
+//Axios
 import axios from '../../axios';
 import requests from '../../requests';
+//Icons
+import { FaPlay } from "react-icons/fa";
+import { MdPlaylistAdd } from "react-icons/md";
 
 const Banner = () => {
     //States
@@ -31,8 +35,14 @@ const Banner = () => {
             <div className="banner_contents">
                 <h1 className="banner_title">{movie.title || movie.name}</h1>
                 <div className="banner_buttons">
-                    <button className="banner_button">Play</button>
-                    <button className="banner_button">My List</button>
+                    <button className="banner_button button_center">
+                        <FaPlay style={{ marginRight: '5px' }} />
+                        Play
+                    </button>
+                    <button className="banner_button button_center">
+                        <MdPlaylistAdd style={{ marginRight: '5px' }} fontSize={20} />
+                        My List
+                    </button>
                 </div>
                 <p className="banner_description">
                     {truncate(`${movie.overview}`, 130)}

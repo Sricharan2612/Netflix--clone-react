@@ -1,7 +1,12 @@
-import axios from '../../axios';
 import React, { useEffect, useState } from 'react';
 import './Row.css';
+//Pages and Components
+import Loader from '../Loader/Loader';
+//Axios
+import axios from '../../axios';
+//React Router
 import { Link, useNavigate } from 'react-router-dom';
+//Redux
 import { useDispatch } from 'react-redux';
 import { ClickedMovie } from '../../actions/MovieAction';
 
@@ -12,11 +17,14 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     // States
     const [movies, setMovies] = useState([]);
     const [clickedMovieDetails, setClickedMovieDetails] = useState(null);
+    const [loader, setLoader] = useState(false);
     //useEffect
     useEffect(() => {
         const fetchData = async () => {
+            setLoader(true);
             const response = await axios.get(fetchUrl);
             setMovies(response.data.results);
+            setLoader(false);
             return response;
         };
         fetchData();
@@ -31,6 +39,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     };
     return (
         <div className='row'>
+            {loader && <Loader />}
             <h2>{title}</h2>
             <div className="row_posters">
                 {movies.map((movie) => (

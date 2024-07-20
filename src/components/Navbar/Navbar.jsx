@@ -28,7 +28,7 @@ const Navbar = () => {
     return (
         <div className={`navbar ${show ? 'nav_black' : ''}`} >
             <div className="nav_contents">
-                <Link to='/'>
+                <Link to='/homepage'>
                     <img className='nav_logo' src={logo} alt="logo" />
                 </Link>
                 <Link to='/profile'>

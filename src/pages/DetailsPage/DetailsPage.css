@@ -5,79 +5,133 @@
 .details_body {
     width: 100%;
     height: 100vh;
-    /* padding: 5px 0px; */
-    color: #fff;
+    color: rgb(230, 230, 230);
     display: flex;
-    background-color: rgba(0, 0, 0, 0.75);
+    flex-direction: column;
+    background-color: rgba(23, 23, 23, 0.75);
 }
 
-.details_content>h1 {
-    font-size: 3.5rem;
+.video {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+}
 
+.video_fadeBottom {
+    height: 7.4rem;
+    background: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
 }
 
 iframe {
-    width: 70%;
+    width: 100%;
     height: 100%;
 }
 
 .details_content {
-    padding: 10px 20px;
+    padding: 20px 30px;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 30%;
-    margin-top: 2.5rem;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.movie_info {
+    width: 70%;
+    padding-right: 6rem;
+}
+
+.movie_info>h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.3rem;
+}
+
+.movie_info>h3>span {
+    color: #559B5E;
+    margin-right: 10px;
+}
+
+.movie_match_info {
+    display: flex;
+    align-items: center;
+}
+
+.movie_info>h3 {
+    font-size: 18px;
+    font-weight: lighter;
+    margin-bottom: 5px;
+    font-weight: bolder;
+    color: #5D5D5D;
+}
+
+.movie_info>h4 {
+    font-weight: lighter;
+    margin-bottom: 1.5rem;
+}
+
+
+
+.movie_info>p {
+    font-size: 16px;
+    line-height: 25px;
 }
 
 .details_info {
+    width: 30%;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-}
-
-.details_content>p {
-    font-size: 18px;
-    line-height: 25px;
-}
-
-.details_content>h3 {
-    font-size: 20px;
-    font-weight: 900;
+    margin-top: 2rem;
 }
 
 .details_info>h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: lighter;
 }
 
 .details_info>h3>span {
     font-size: 20px;
     font-weight: 900;
+    color: #5D5D5D;
 }
 
-@media only screen and (max-width:1120px) {
-    .details_body {
-        flex-direction: column;
-        height: 100%;
-    }
 
-    iframe {
+@media only screen and (max-width:568px) {
+    .video {
         width: 100%;
-        height: 90vh;
+        height: 60vh;
     }
 
     .details_content {
-        width: 100%;
-        margin: 20px 0;
+        flex-direction: column;
+        gap: 0;
     }
 
+    .movie_info {
+        padding-right: 0rem !important;
+        width: 100%;
+    }
 
+    .details_info {
+        width: 80%;
+    }
+
+    .details_body {
+        height: 100%;
+    }
 }
 
-@media only screen and (max-width:767px) {
-    .details_content>h1 {
+@media only screen and (max-width:768px) {
+    .movie_info {
+        padding-right: 2rem;
+    }
+
+    .movie_info>h1 {
         font-size: 2.5rem;
     }
 }

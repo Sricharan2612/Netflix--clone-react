@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Plans.css';
+//Pages and Components
+import Loader from '../../components/Loader/Loader';
+//Firebase
 import db from '../../firebase';
 import { addDoc, collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'firebase/firestore';
+//Redux
 import { useSelector } from 'react-redux';
+//Stripe
 import { loadStripe } from '@stripe/stripe-js';
 
 
@@ -10,9 +15,11 @@ const Plans = () => {
   const [products, setProducts] = useState([]);
   const { user } = useSelector(data => data.user);
   const [subscription, setSubscription] = useState(null);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     const getSubData = async () => {
+      setLoader(true);
       const customerRef = collection(db, 'customers');
       const customerDocData = doc(customerRef, user.uid);
       const subscriptionRef = collection(customerDocData, 'subscriptions');
@@ -24,6 +31,7 @@ const Plans = () => {
           current_period_start: subscription.data().current_period_start.seconds,
         });
       });
+      setLoader(false);
     };
     getSubData();
   }, [user.uid]);
@@ -31,6 +39,7 @@ const Plans = () => {
   //For getting data of products and users
   useEffect(() => {
     const getData = async () => {
+      setLoader(true);
       const products = {};
       //For accessing products collection 
       const productsRef = collection(db, "products");
@@ -50,11 +59,13 @@ const Plans = () => {
         });
       });
       setProducts(products);
+      setLoader(false);
     };
     getData();
   }, []);
 
   const loadCheckout = async (priceId) => {
+    setLoader(true);
     const customerRef = collection(db, 'customers');
     const userDocRef = doc(customerRef, user.uid);
     const docRef = await addDoc(collection(userDocRef, 'checkout_sessions'), {
@@ -74,16 +85,20 @@ const Plans = () => {
       if (sessionId) {
         //We have a session, let's redirect to checkout
         //Init Stripe
+        setLoader(true);
         const stripe = await loadStripe("pk_test_51Pciv1Rv54ptdD6sVDUSG2sYOVEb0wyLGeOWlg0EXwZDMYsjeUtFGb6td9GAJGLUDrnwmRrMIuWDmffpr2DJZlSo00tPrbSxfB");
         stripe.redirectToCheckout({ sessionId });
+        setLoader(false);
       }
 
     });
+    setLoader(false);
   };
   // console.log(Object.entries(products));
   console.log(subscription);
   return (
     <div className='plans'>
+      {loader && <Loader />}
       <br />
       {subscription && <p>Renewal date: {new Date(subscription?.current_period_end * 1000).toLocaleDateString()}</p>}
       {Object.entries(products).map(([productId, productData]) => {
