@@ -71,8 +71,8 @@ const Plans = () => {
     const userDocRef = doc(customerRef, user.uid);
     const docRef = await addDoc(collection(userDocRef, 'checkout_sessions'), {
       price: priceId,
-      success_url: `${window.location.href}`,
-      cancel_url: `${window.location.href}`
+      success_url: 'https://netflixxclone.netlify.app/homepage',
+      cancel_url: 'https://netflixxclone.netlify.app/profile'
     });
     const onsub = onSnapshot(docRef, async (doc) => {
       const { error, sessionId } = doc.data();
@@ -96,7 +96,7 @@ const Plans = () => {
     setLoader(false);
   };
   // console.log(Object.entries(products));
-  console.log(subscription);
+  // console.log(subscription);
   return (
     <div className='plans'>
       {loader && <Loader />}

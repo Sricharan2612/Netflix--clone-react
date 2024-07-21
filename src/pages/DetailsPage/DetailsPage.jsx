@@ -23,9 +23,7 @@ const DetailsPage = () => {
 
     return (
         video && (
-            <div className='detailspage' style={{
-                // background: `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`,
-            }}>
+            <div className='detailspage'>
                 <div className="details_body">
                     <div className="video">
                         <iframe src={`https://www.youtube.com/embed/${video.key}`} frameBorder="0" align='center'></iframe>

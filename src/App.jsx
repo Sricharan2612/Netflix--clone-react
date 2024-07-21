@@ -35,7 +35,6 @@ function App() {
   }, (error) => {
     return Promise.reject(error);
   });
-
   const { user } = useSelector(data => data.user);
   const dispatch = useDispatch();
 
