@@ -11,7 +11,9 @@ function LandingPage() {
     return (
         <div className='LandingPage'>
             <div className="LandingPage_background">
-                <img src={logo} alt="logo" className="LandingPage_logo" />
+                <Link to='/'>
+                    <img src={logo} alt="logo" className="LandingPage_logo" />
+                </Link>
                 <Link to='/signup'>
                     <button className="LandingPage_btn">Sign In</button>
                 </Link>
