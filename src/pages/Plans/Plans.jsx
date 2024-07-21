@@ -58,6 +58,7 @@ const Plans = () => {
           };
         });
       });
+
       setProducts(products);
       setLoader(false);
     };
@@ -70,8 +71,8 @@ const Plans = () => {
     const userDocRef = doc(customerRef, user.uid);
     const docRef = await addDoc(collection(userDocRef, 'checkout_sessions'), {
       price: priceId,
-      success_url: 'http://localhost:3000/homepage',
-      cancel_url: 'http://localhost:3000/homepage'
+      success_url: `${window.location.href}`,
+      cancel_url: `${window.location.href}`
     });
     const onsub = onSnapshot(docRef, async (doc) => {
       const { error, sessionId } = doc.data();

@@ -19,6 +19,7 @@ import axios from "./axios";
 
 
 function App() {
+  const locationUrl = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
   const [loader, setLoader] = useState(false);
   //Request Interceptor
   axios.interceptors.request.use((config) => {
@@ -59,7 +60,7 @@ function App() {
     <div className="app">
       {loader && (<Loader />)}
       <Routes>
-        {!user ? (<Route path="/" element={<LandingPage />} />) : (<Route path="/homepage" element={<HomeScreen />} />)}
+        {!user ? <Route path="/" element={<LandingPage />} /> : <Route path="/homepage" element={<HomeScreen />} />}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/profile" element={<Profile />} />
