@@ -56,13 +56,13 @@
 
 .LandingPage_body>h1 {
     font-size: 3.125rem;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .LandingPage_body>h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 400;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .LandingPage_body>p {
@@ -86,7 +86,7 @@
 }
 
 .LandingPage_getStarted {
-    padding: 16px 20px;
+    padding: 13px 20px;
     font-size: 1rem;
     color: #fff;
     background-color: #e50914;

@@ -39,9 +39,11 @@ const SignIn = () => {
     return (
         <div className='signin'>
             {loader && <Loader />}
-            <div className="logo">
-                <img src={logo} alt="logo" />
-            </div>
+            <Link to='/'>
+                <div className="logo">
+                    <img src={logo} alt="logo" />
+                </div>
+            </Link>
             <ToastContainer />
             <form>
                 <h1>Sign In</h1>
@@ -50,7 +52,7 @@ const SignIn = () => {
                 <button onClick={signIn} type='submit'>Sign In</button>
                 <h4>
                     <span className='signin_gray'>New to Netflix?</span>
-                    <Link to='/signup'>
+                    <Link to='/signup' style={{ textDecoration: 'none' }}>
                         <span className='signin_link'>Sign up now</span>
                     </Link>
                 </h4>
