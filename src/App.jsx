@@ -19,7 +19,6 @@ import axios from "./axios";
 
 
 function App() {
-  const locationUrl = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
   const [loader, setLoader] = useState(false);
   //Request Interceptor
   axios.interceptors.request.use((config) => {
