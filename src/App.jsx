@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import './App.css';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 //Pages and Components
 import HomeScreen from "./pages/HomeScreen/HomeScreen";
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -19,6 +19,7 @@ import axios from "./axios";
 
 
 function App() {
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
   //Request Interceptor
   axios.interceptors.request.use((config) => {
@@ -54,11 +55,20 @@ function App() {
     return unsubscribe;
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate('/homepage');
+  //   } else {
+  //     navigate('/');
+  //   }
+  // }, [user]);
+
   return (
     <div className="app">
       {loader && (<Loader />)}
       <Routes>
-        {!user ? <Route path="/" element={<LandingPage />} /> : <Route path="/homepage" element={<HomeScreen />} />}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/homepage" element={<HomeScreen />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/profile" element={<Profile />} />
