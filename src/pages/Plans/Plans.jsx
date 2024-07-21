@@ -70,8 +70,8 @@ const Plans = () => {
     const userDocRef = doc(customerRef, user.uid);
     const docRef = await addDoc(collection(userDocRef, 'checkout_sessions'), {
       price: priceId,
-      success_url: window.location.origin,
-      cancel_url: window.location.origin
+      success_url: 'http://localhost:3000/homepage',
+      cancel_url: 'http://localhost:3000/homepage'
     });
     const onsub = onSnapshot(docRef, async (doc) => {
       const { error, sessionId } = doc.data();
