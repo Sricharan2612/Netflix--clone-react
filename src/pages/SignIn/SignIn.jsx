@@ -27,6 +27,7 @@ const SignIn = () => {
         signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
             .then((userCredential) => {
                 setLoader(false);
+                toast.success("Login Sucessfull ");
                 navigate('/homepage');
             })
             .catch((error) => {
@@ -44,7 +45,6 @@ const SignIn = () => {
                     <img src={logo} alt="logo" />
                 </div>
             </Link>
-            <ToastContainer />
             <form>
                 <h1>Sign In</h1>
                 <input ref={emailRef} type="email" placeholder='Email' />

@@ -31,6 +31,7 @@ const SignUp = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setLoader(false);
+                toast.success("Account Created");
                 navigate('/homepage');
                 return updateProfile(user, { displayName: userName });
             })
@@ -49,7 +50,6 @@ const SignUp = () => {
                     <img src={logo} alt="logo" />
                 </div>
             </Link>
-            <ToastContainer />
             <form>
                 <h1>Sign Up</h1>
                 <input onChange={(e) => setUserName(e.target.value)} type="text" placeholder='Name' />

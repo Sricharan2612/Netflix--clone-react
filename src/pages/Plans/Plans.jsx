@@ -9,6 +9,7 @@ import { addDoc, collection, doc, getDoc, getDocs, onSnapshot, query, where } fr
 import { useSelector } from 'react-redux';
 //Stripe
 import { loadStripe } from '@stripe/stripe-js';
+import { toast } from 'react-toastify';
 
 
 const Plans = () => {
@@ -81,7 +82,7 @@ const Plans = () => {
       if (error) {
         //Show error function
         //Inspect cloud function logs in the  firebase console
-        alert(`An error occured:${error.message}`);
+        toast.error(error.message.split('/')[1].split('-').join(' ').split(')')[0]);
       }
 
       if (sessionId) {

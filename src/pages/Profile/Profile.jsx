@@ -7,12 +7,14 @@ import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import Plans from '../Plans/Plans';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
     const navigate = useNavigate();
     const { user } = useSelector(data => data.user);
     const singOutUser = async () => {
         await signOut(auth);
+        toast.success('Logged Out!');
         navigate('/');
     };
     return (
