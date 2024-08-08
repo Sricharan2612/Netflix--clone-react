@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import './App.css';
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 //Pages and Components
 import HomeScreen from "./pages/HomeScreen/HomeScreen";
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -55,24 +55,17 @@ function App() {
     return unsubscribe;
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate('/homepage');
-  //   } else {
-  //     navigate('/');
-  //   }
-  // }, [user]);
-
   return (
     <div className="app">
       {loader && (<Loader />)}
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={user ? <Navigate to="/homepage" /> : <LandingPage />} />
         <Route path="/homepage" element={<HomeScreen />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/details/:id" element={<DetailsPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

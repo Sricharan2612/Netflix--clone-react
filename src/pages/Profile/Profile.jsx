@@ -5,11 +5,16 @@ import avatar from '../../assets/netflix-avatar.png';
 import { useSelector } from 'react-redux';
 import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Plans from '../Plans/Plans';
 
 const Profile = () => {
+    const navigate = useNavigate();
     const { user } = useSelector(data => data.user);
+    const singOutUser = async () => {
+        await signOut(auth);
+        navigate('/');
+    };
     return (
         user && (
             <div className='profile'>
@@ -23,9 +28,7 @@ const Profile = () => {
                             <div className="profile_plans">
                                 <h3>Plans</h3>
                                 <Plans />
-                                <Link to='/'>
-                                    <button onClick={() => signOut(auth)} className='profile_signOut'>Sign Out</button>
-                                </Link>
+                                <button onClick={() => singOutUser()} className='profile_signOut'>Sign Out</button>
                             </div>
                         </div>
                     </div>
